@@ -16,7 +16,7 @@ const page = async () => {
   let categories = await Category.find({});
  
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-green-300">
+    <div className="bg-gradient-to-r from-blue-500 to-green-300 ">
       {!session?.user && <SignIn />}
       {session?.user && (
         <>
