@@ -9,11 +9,18 @@ export default function SignIn() {
         await signIn("google");
       }}
     >
-      
-      <button type="submit" className=" flex  flex-1 items-center gap-3 bg-slate-100 border px-3 py-2 rounded-md mt-3  justify-center border-gray-900 ">
-        <Image src = "https://authjs.dev/img/providers/google.svg" width={30} height={30}/>
-        <span>Signin with Google</span>
-      </button>
+      <div className=" flex flex-1 justify-center items-center h-[85vh]">
+        <button className="flex items-center px-6 py-3 bg-pink-50 shadow rounded-lg">
+          <Image
+            src="https://authjs.dev/img/providers/google.svg"
+            width={30}
+            height={30}
+            alt="Google Logo"
+            className="mr-3"
+          />
+          <span class="text-blue-500  text-2xl">Sign in with Google</span>
+        </button>
+      </div>
     </form>
   );
 }

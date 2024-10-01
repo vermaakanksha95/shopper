@@ -56,7 +56,7 @@ function NavList() {
         </a>
       </Typography>
 
-      <div className=" text-center">
+      <div className=" text-center px-2 py-2 bg-gray-800 rounded text-white">
         <SignOut/>
       </div>
 
