@@ -22,10 +22,8 @@ const page = async ({params}) => {
     <div className='flex flex-1 flex-col mt-10'>
       <h2 className='text-2xl'>Related Products</h2>
        <ProductSection data={relatedProduct}/>
-
-    </div>
+       </div>
     </div>
   )
 }
-
 export default page

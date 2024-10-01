@@ -55,9 +55,11 @@ function NavList() {
           Categories
         </a>
       </Typography>
+
       <div className=" text-center">
         <SignOut/>
       </div>
+
       <a href="/cart">
       <Badge content={5}>
 
