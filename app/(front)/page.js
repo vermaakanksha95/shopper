@@ -7,9 +7,11 @@ import DbConnect from '@/utils/dbConnect'
 import Category from '@/models/Category'
 
 
+
 const page = async () => {
   DbConnect();
   let categories = await Category.find({});
+ 
   return (
     <div>
       

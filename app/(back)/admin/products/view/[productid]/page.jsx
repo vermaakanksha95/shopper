@@ -29,7 +29,7 @@ const page = async ({ params }) => {
       <div className=" flex flex-1 flex-col">
         <div className="flex flex-1 justify-between">
         <h2 className=" text-xl font-semibold">Edit Products</h2>
-        <PublishButton className={!remainingFields ??"cursor-not-allowed"}/>
+        <PublishButton productid={productid} className={remainingFields.length ?"cursor-not-allowed": "cursor-pointer"} isDisabled={remainingFields.length}/>
         </div>
         <div className=" flex flex-1 gap-3">
         <p>Total Fields:{total_fields.length}</p>

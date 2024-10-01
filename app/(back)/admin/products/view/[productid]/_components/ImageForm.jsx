@@ -6,12 +6,23 @@ import React, { useState } from "react";
 
 const ImageForm = ({ label, field, productid }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [image, setImage] = useState(field);
+  const [photo, setPhoto] = useState(field);
 
   const router = useRouter();
 
   const handleUpdate = async () => {
+
+    const formData = new FormData();
+    formData.append("image",photo);
+
+    let image = formData.get("image").name;
     try {
+      // upload image api calling
+        await fetch(`http://localhost:3000/api/product/${productid}/upload`, {
+          method:"POST",
+          body:formData
+        })
+
       await fetch(`http://localhost:3000/api/product/${productid}`, {
         method: "PUT",
         headers: {
@@ -23,7 +34,7 @@ const ImageForm = ({ label, field, productid }) => {
       console.log(error);
     }
     setIsEdit(false);
-    setImage(field);
+    setPhoto(field);
     router.refresh();
   };
 
@@ -39,13 +50,12 @@ const ImageForm = ({ label, field, productid }) => {
           </Button>
         </div>
 
-        {isEdit ? (
+        {isEdit ? 
           <div className="flex">
             <Input
             type="file"
               size="lg"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              onChange={(e) => setPhoto(e.target.files[0])}
               className=" rounded-none flex-1 bg-white !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
@@ -58,11 +68,8 @@ const ImageForm = ({ label, field, productid }) => {
             >
               GO
             </Button>
-          </div>
-        ) : field ? (
-          <p className=" text-xl ">{field}</p>
-        ) : (
-          <p className=" text-xl italic">{label} is empty</p>
+          </div>:(( field) ? 
+          <img src={`/productImages/${field}`} className=" w-full"/>: <p className=" text-xl italic">{label} is empty</p>
         )}
       </div>
     </form>

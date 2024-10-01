@@ -1,20 +1,19 @@
 import React from 'react'
 import { ProductCard } from './product-card'
+import Product from '@/models/Product';
 
-const ProductSection = () => {
+export default async  function  ProductSection (){
+
+   let products = await Product.find({status:true});
   return (
     <div className=' grid gap-5 grid-cols-2 md:grid-cols-4'>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-      
-    </div>
+      {
+        products.map((product,index) => (<ProductCard data={product} key={index}/>))
+
+      }
+      </div>
   )
 }
 
-export default ProductSection
+
+

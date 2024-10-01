@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
-import Category from "./Category"
+import Category from "./Category";
+
 
 const ProductSchema = new mongoose.Schema({
     name:{type:String,required:true},
@@ -11,8 +12,11 @@ const ProductSchema = new mongoose.Schema({
     description:{type:String,default:null},
     barcode:{type:String,default:null},
     image:{type:String,default:null},
-    brand:{type:String,default:null}
+    brand:{type:String,default:null},
+    status:{type:Boolean,default:false},
 
 })
+
+//delete mongoose.models.Product;
 
 export default mongoose.models.Product || mongoose.model("Product",ProductSchema);

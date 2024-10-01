@@ -8,25 +8,26 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function ProductCard() {
+export function ProductCard({data}) {
   return (
     <Card className="  flex-1 flex flex-col">
       <CardHeader shadow={false} floated={false} className="h-48">
         <img
-          src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+          src={`/productImages/${data.image}`}
           alt="card-image"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </CardHeader>
       <CardBody>
         <div className="mb-2 flex items-center justify-between">
           <Typography color="blue-gray" className="font-medium">
-            Apple AirPods
+            {data.name}
           </Typography>
           <Typography color="blue-gray" className="font-medium">
-            $95.00
+            {data.discount_price ? "₹" + data.discount_price : "₹" + data.price}
           </Typography>
         </div>
+
         <Typography
           variant="small"
           color="gray"
