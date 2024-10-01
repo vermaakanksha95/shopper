@@ -9,8 +9,11 @@ import {
   Badge,
 } from "@material-tailwind/react";
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { SignOut } from "./signout";
 
 function NavList() {
+  //const {data} = useSession();
+  
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -52,6 +55,9 @@ function NavList() {
           Categories
         </a>
       </Typography>
+      <div className=" text-center">
+        <SignOut/>
+      </div>
       <a href="/cart">
       <Badge content={5}>
 
@@ -84,7 +90,7 @@ export function PublicHeader() {
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
-          href="#"
+          href="/"
           variant="h6"
           className="mr-4 cursor-pointer py-1.5"
         >

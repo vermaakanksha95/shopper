@@ -7,9 +7,11 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import Link from "next/link";
 
 export function ProductCard({data}) {
   return (
+    <Link href={`/${data.slug}`}>
     <Card className="  flex-1 flex flex-col">
       <CardHeader shadow={false} floated={false} className="h-48">
         <img
@@ -23,7 +25,7 @@ export function ProductCard({data}) {
           <Typography color="blue-gray" className="font-medium">
             {data.name}
           </Typography>
-          <Typography color="blue-gray" className="font-medium">
+          <Typography color="blue-gray" className="font-medium text-red-500">
             {data.discount_price ? "₹" + data.discount_price : "₹" + data.price}
           </Typography>
         </div>
@@ -31,21 +33,13 @@ export function ProductCard({data}) {
         <Typography
           variant="small"
           color="gray"
-          className="font-normal opacity-75"
+          className="font-normal opacity-75 "
         >
-          With plenty of talk and listen time, voice-activated Siri access, and
-          an available wireless charging case.
+          {data.description.substr(0,100)}
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0">
-        <Button
-          ripple={false}
-          fullWidth={true}
-          className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-        >
-          Add to Cart
-        </Button>
-      </CardFooter>
+      
     </Card>
+    </Link>
   );
 }
