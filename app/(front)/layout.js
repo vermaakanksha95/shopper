@@ -20,8 +20,7 @@ export default async function RootLayout({ children }) {
     if(session){
       if(session.user){
          let user = await User.findOne({
-           name: session.user.name,
-           email: session.user.email,
+          email:session.user.email
          })
          if(!user){
           user = await User.create({name:session.user.name,email:session.user.email})

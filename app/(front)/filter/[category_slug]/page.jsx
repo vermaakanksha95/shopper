@@ -4,9 +4,6 @@ import ProductSection from "../../components/product-section";
 import Heading from "../../components/heading";
 import Category from "@/models/Category";
 
-
-
-
 const page = async ({params}) => {
   const {category_slug} = params;
   let CategoryDetails = await Category.findById(category_slug)

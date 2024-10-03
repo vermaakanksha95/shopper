@@ -7,7 +7,11 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function ProductViewTop({data}) {
+export function ProductViewTop({data,user}) {
+
+  const handleAddToCart = async () => {
+    let data = fetch(``);
+  }
   return (
     <Card className="w-full flex-row">
       <CardHeader
@@ -16,7 +20,7 @@ export function ProductViewTop({data}) {
         className="m-0 w-2/5 shrink-0 rounded-r-none"
       >
         <img
-          src={`/productImages/${data?.image}`}
+          src={`/productImages/${data.image}`}
           className="h-full w-full object-cover"
         />
       </CardHeader>
@@ -33,6 +37,7 @@ export function ProductViewTop({data}) {
         </Typography>
         <a href="#" className="inline-block">
           <Button
+          onClick={handleAddToCart}
             variant="text"
             className="flex  text-xl font-normal bg-orange-600 hover:bg-orange-800 text-white items-center gap-2"
           >
