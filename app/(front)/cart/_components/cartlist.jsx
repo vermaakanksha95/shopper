@@ -1,4 +1,5 @@
 "use client"
+import DbConnect from "@/utils/dbConnect";
 import { Card, CardBody, Typography, Avatar } from "@material-tailwind/react";
 
 const customers = [
@@ -39,7 +40,8 @@ const customers = [
   },
 ];
 
-export function CartList() {
+export function CartList({order}) {
+  DbConnect();
   return (
     <Card className="w-full">
       <CardBody>

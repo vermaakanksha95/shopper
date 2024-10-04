@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import Order from "@/models/Order";
 import Product from "@/models/Product";
 import DbConnect from "@/utils/dbConnect";
@@ -29,16 +28,17 @@ export async function POST(req, { params }) {
       )
       if (existingItemIndex >= 0) {
         order.items[existingItemIndex].quantity += 1;
-      } else {
+      }
+       else {
         order.items.push({item:productid});
       }
       await order.save();
     }
-    return NextResponse.json({ order })
+    return NextResponse.json({order,message:"Add to cart done"},{status:200})
  }
    catch (error) {
     return NextResponse.json(
-      { message: "Error fetching product", error },
+      { message: "Error fetching product", error:error.message },
       { status: 500 }
     )
   }

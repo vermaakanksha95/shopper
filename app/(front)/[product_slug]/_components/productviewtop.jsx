@@ -10,10 +10,19 @@ import {
 export function ProductViewTop({data,user}) {
 
   const handleAddToCart = async () => {
-    let data = fetch(``);
-  }
+
+    const orderData = await fetch(`http://localhost:3000/api/order/add-to-cart/${data._id}`,{
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({ user_id:user._id})
+    });
+    console.log("success after fetch" + orderData.message)
+  };
+
   return (
-    <Card className="w-full flex-row">
+    <Card className="w-full flex flex-row">
       <CardHeader
         shadow={false}
         floated={false}
@@ -26,7 +35,7 @@ export function ProductViewTop({data,user}) {
       </CardHeader>
       <CardBody>
         <Typography variant="h4" color="blue-gray" className="mb-2">
-         {data.name}
+          {data.name}
         </Typography>
         <Typography variant="h6" color="gray" className="mb-4 uppercase">
           {data.category}
@@ -37,7 +46,7 @@ export function ProductViewTop({data,user}) {
         </Typography>
         <a href="#" className="inline-block">
           <Button
-          onClick={handleAddToCart}
+            onClick={() => handleAddToCart ()}
             variant="text"
             className="flex  text-xl font-normal bg-orange-600 hover:bg-orange-800 text-white items-center gap-2"
           >

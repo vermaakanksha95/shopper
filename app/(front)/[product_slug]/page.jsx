@@ -1,4 +1,3 @@
-import React from 'react'
 import { ProductViewTop } from './_components/productviewtop'
 import DbConnect from '@/utils/dbConnect';
 import Product from '@/models/Product';
