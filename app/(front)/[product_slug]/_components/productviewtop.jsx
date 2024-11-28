@@ -6,19 +6,24 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 
 export function ProductViewTop({data,user}) {
 
+  const router = useRouter();
+
   const handleAddToCart = async () => {
 
-    const orderData = await fetch(`http://localhost:3000/api/order/add-to-cart/${data._id}`,{
+    const respose = await fetch(`http://localhost:3000/api/order/add-to-cart/${data._id}`,{
       method:"POST",
       headers:{
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({ user_id:user._id})
     });
-    console.log("success after fetch" + orderData.message)
+    
+    console.log("success after fetch" , data.message)
+    router.push("/cart");
   };
 
   return (

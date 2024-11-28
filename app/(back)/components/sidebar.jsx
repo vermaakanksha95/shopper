@@ -153,12 +153,14 @@ export function Sidebar() {
             />
           </ListItemSuffix>
         </ListItem>
+       <Link href="/admin/coupon">
         <ListItem>
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />
           </ListItemPrefix>
           Manage Coupons
         </ListItem>
+       </Link>
         <ListItem>
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />

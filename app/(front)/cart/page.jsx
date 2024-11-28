@@ -1,27 +1,26 @@
-import React from 'react'
-import Heading from '../components/heading';
-import { CartList } from './_components/cartlist';
-import { PriceBreak } from './_components/priceBreak';
-import CouponForm from './_components/couponForm';
+import React from "react";
+import Heading from "../components/heading";
+import { CartList } from "./_components/cartlist";
 
+import User from "@/models/User";
+import { auth } from "@/auth";
 
-export default async function page(){
-return (
+const page = async () => {
+  let user = null;
+  const session = await auth();
+  if (session) {
+    user = await User.findOne({ email: session.user.email });
+  }
+  return (
     <>
-    <Heading color="bg-black" title="My Cart" subtitle="Manage your cart by adding some products"/>
-      <div className=" px-[5%] flex flex-1 gap-4 mt-5">
-        <div className="w-9/12">
-        
-          <CartList order = {order[0].item} /> 
-        
-        </div>
-        <div className="w-3/12">
-        <PriceBreak/>
-        <CouponForm/>
-        </div>
-      </div>
+      <Heading
+        color="bg-black"
+        title="My Cart"
+        subtitle="Manage yoyr Cart By Adding your same product"
+      />
+      <CartList user={user} />
     </>
   );
-}
+};
 
-
+export default page;

@@ -10,9 +10,11 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { SignOut } from "./signout";
+import { useRouter } from "next/navigation";
 
 function NavList() {
   //const {data} = useSession();
+  const router = useRouter();
   
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -63,7 +65,7 @@ function NavList() {
       <a href="/cart">
       <Badge content={5}>
 
-        <Button className=" flex items-center gap-3">
+        <Button className=" flex items-center gap-3" onClick={() => router.push("/cart")}>
           <ShoppingCartIcon className=" fill-white size-5"/>
           Cart
         </Button>

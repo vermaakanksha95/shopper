@@ -2,10 +2,10 @@
 
 import DbConnect from "@/utils/dbConnect";
 import { Card, Typography } from "@material-tailwind/react";
-import Link from "next/link";
 
-export function ProductCalling({ data }) {
-  const TABLE_HEAD = ["id", "name", "Price", "Discount_price", "Action"];
+const TABLE_HEAD = ["id", "Code", "Amount", "Action","Status"];
+
+export function CouponTable({ data }) {
   DbConnect();
 
   return (
@@ -30,12 +30,12 @@ export function ProductCalling({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ _id, name, price, discount_price }, index) => {
+          {data.map(({ id, code, amount,status}, index) => {
             const isLast = index === data.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
             return (
-              <tr key={name}>
+              <tr key={id}>
                 <td className={classes}>
                   <Typography
                     variant="small"
@@ -51,7 +51,7 @@ export function ProductCalling({ data }) {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {name}
+                    {code}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -60,7 +60,7 @@ export function ProductCalling({ data }) {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {price}
+                    {amount}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -69,21 +69,19 @@ export function ProductCalling({ data }) {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {discount_price}
+                    {(status)?<span className=" text-green-600">Active</span> :<span className=" text-red-600">Disabled</span>}
                   </Typography>
                 </td>
                 <td className={classes}>
-                  <Link href={`/admin/products/view/${_id}`}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      variant="small"
-                      color="blue-gray"
-                      className="font-medium"
-                    >
-                      Edit
-                    </Typography>
-                  </Link>
+                  <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    color="blue-gray"
+                    className="font-medium"
+                  >
+                    Edit
+                  </Typography>
                 </td>
               </tr>
             );
